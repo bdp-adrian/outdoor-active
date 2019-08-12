@@ -1,8 +1,12 @@
-
-
-.oax .oax-cluster-marker-cont, .oax-cluster-marker-cont {
-    background-color: red;
+.oax .oax_map_btn_dark {
+    background-color: var(--indigo);
 }
 .oax .oax-cluster-marker-cont, .oax-cluster-marker-cont {
     background-color: var(--teal);
+}
+.oax .oax-filter-selectors {
+    background-color: var(--teal);
+}
+.oax .oax-mapList-toggled {
+    background-color: var(--cyan);
 }

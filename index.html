@@ -18,6 +18,10 @@
                 <div class="col-6">
                     <div class="oax-top-cont"></div>
                 </div>
+                <div class="col-6">
+                    <ul id="tourList">
+                    </ul>
+                </div>
             </div>
 
         </div>
@@ -27,10 +31,45 @@
         var conf = {
           frontendtype:   "tour",          // choose content type
           zoom:           11,              // set initial zoom level
-          center:       [ 10.292, 47.546 ] // set initial map center
+          center:       [ 10.434, 51.079 ] // set initial map center
         };
 
         var fvp = oa.api.flexviewpage( conf );
+
+        // grab ul element out of DOM
+        var tourList = document.getElementById("tourList");
+
+        // instantiate Objects API
+        new oa.api.OOIs(
+            {
+                // list of string ids (just the ids of two tours)
+                idlist: [ '1397449', '5345254' ],
+
+                // only load basic tour data from backend
+                // (to save bandwidth)
+                lightweightApp: 'tour'
+            }
+
+        // tell the Obejcts API to load the data
+        ).load( onLoad );
+
+        // onload callback
+        function onLoad( status, oois ) {
+
+            // do something with the loaded ooi data
+            for(var i=0; i<oois.length; i++) {
+
+          // create a new list item for each loaded tour
+                li = document.createElement("li");
+
+          // fill the list item with id, title and distance of the loaded tour
+          li.innerHTML = "Id "+ oois[i].id + ": " + oois[i].title + ", Distance " + Math.round(oois[i].length) + " m";
+
+          // append list item to unordered list
+          tourList.appendChild(li);
+            }
+
+        }
 
     </script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
