@@ -19,7 +19,7 @@
                     <div class="oax-top-cont"></div>
                 </div>
                 <div class="col-6">
-                    <ul id="tourList">
+                    <ul id="tourList" class="list-group">
                     </ul>
                 </div>
             </div>
@@ -59,14 +59,16 @@
             // do something with the loaded ooi data
             for(var i=0; i<oois.length; i++) {
 
-          // create a new list item for each loaded tour
+                // create a new list item for each loaded tour
                 li = document.createElement("li");
 
-          // fill the list item with id, title and distance of the loaded tour
-          li.innerHTML = "Id "+ oois[i].id + ": " + oois[i].title + ", Distance " + Math.round(oois[i].length) + " m";
+                li.setAttribute("class", "list-group-item");
 
-          // append list item to unordered list
-          tourList.appendChild(li);
+                // fill the list item with id, title and distance of the loaded tour
+                li.innerHTML = oois[i].title + ", Strecke " + Math.round(oois[i].length) + " m";
+
+                // append list item to unordered list
+                tourList.appendChild(li);
             }
 
         }
